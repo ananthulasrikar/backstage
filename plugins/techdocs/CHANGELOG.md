@@ -1,5 +1,12 @@
 # @backstage/plugin-techdocs
 
+## 0.9.7
+
+### Patch Changes
+
+- aefd54da6: Fix the overlapping between the sidebar and the tabs navigation when enabled in mkdocs (features: navigation.tabs)
+- 1dfec7a2a: Refactor the implicit logic from `<Reader />` into an explicit state machine. This resolves some state synchronization issues when content is refreshed or rebuilt in the backend.
+
 ## 0.9.6
 
 ### Patch Changes

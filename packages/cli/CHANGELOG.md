@@ -1,5 +1,14 @@
 # @backstage/cli
 
+## 0.7.2
+
+### Patch Changes
+
+- 953a7e66f: updated plugin template to generate path equals plugin id for the root page
+- e3d31b381: Make the `create-github-app` command disable webhooks by default.
+- 8f100db75: chore: bump `@typescript-eslint/eslint-plugin` from 4.26.0 to 4.27.0
+- ece2b5dd1: chore: bump `@spotify/eslint-config-typescript` from 9.0.0 to 10.0.0
+
 ## 0.7.1
 
 ### Patch Changes

@@ -1,5 +1,15 @@
 # @backstage/plugin-scaffolder
 
+## 0.9.9
+
+### Patch Changes
+
+- 5f4339b8c: Adding `FeatureFlag` component and treating `FeatureFlags` as first class citizens to composability API
+- 71416fb64: Moved installation instructions from the main [backstage.io](https://backstage.io) documentation to the package README file. These instructions are not generally needed, since the plugin comes installed by default with `npx @backstage/create-app`.
+- Updated dependencies
+  - @backstage/core-plugin-api@0.1.3
+  - @backstage/catalog-client@0.3.14
+
 ## 0.9.8
 
 ### Patch Changes

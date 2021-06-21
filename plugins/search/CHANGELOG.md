@@ -1,5 +1,11 @@
 # @backstage/plugin-search
 
+## 0.4.1
+
+### Patch Changes
+
+- d5db15efb: Use the `identityApi` to forward authorization headers to the `search-backend`
+
 ## 0.4.0
 
 ### Minor Changes

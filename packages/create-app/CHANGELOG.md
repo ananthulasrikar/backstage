@@ -1,5 +1,22 @@
 # @backstage/create-app
 
+## 0.3.28
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/plugin-explore@0.3.7
+  - @backstage/plugin-catalog@0.6.4
+  - @backstage/plugin-scaffolder@0.9.9
+  - @backstage/catalog-client@0.3.14
+  - @backstage/cli@0.7.2
+  - @backstage/plugin-search@0.4.1
+  - @backstage/plugin-catalog-backend@0.10.4
+  - @backstage/plugin-techdocs@0.9.7
+  - @backstage/plugin-auth-backend@0.3.14
+  - @backstage/plugin-scaffolder-backend@0.12.3
+  - @backstage/plugin-techdocs-backend@0.8.4
+
 ## 0.3.27
 
 ### Patch Changes
