@@ -40,7 +40,7 @@
 <tr><th>Interface</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="/docs/reference/plugin-auth-backend.authproviderroutehandlers">AuthProviderRouteHandlers</a></td><td>Any Auth provider needs to implement this interface which handles the routes in the auth backend. Any auth API requests from the frontend reaches these methods.<!-- -->The routes in the auth backend API are tied to these methods like below<!-- -->/auth/[provider]/start -<!-- -->&gt; start /auth/[provider]/handler/frame -<!-- -->&gt; frameHandler /auth/[provider]/refresh -<!-- -->&gt; refresh /auth/[provider]/logout -<!-- -->&gt; logout</td></tr>
+<tr><td><a href="/docs/reference/plugin-auth-backend.authproviderroutehandlers">AuthProviderRouteHandlers</a></td><td>Any Auth provider needs to implement this interface which handles the routes in the auth backend. Any auth API requests from the frontend reaches these methods.<!-- -->The routes in the auth backend API are tied to these methods like below<code>/auth/[provider]/start -&gt; start</code> <code>/auth/[provider]/handler/frame -&gt; frameHandler</code> <code>/auth/[provider]/refresh -&gt; refresh</code> <code>/auth/[provider]/logout -&gt; logout</code></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.backstageidentityresponse">BackstageIdentityResponse</a></td><td>Response object containing the <a href="/docs/reference/plugin-auth-backend.backstageuseridentity">BackstageUserIdentity</a> and the token from the authentication provider.</td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.backstagesigninresult">BackstageSignInResult</a></td><td>A representation of a successful Backstage sign-in.<!-- -->Compared to the <a href="/docs/reference/plugin-auth-backend.backstageidentityresponse">BackstageIdentityResponse</a> this type omits the decoded identity information embedded in the token.</td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.oauthhandlers">OAuthHandlers</a></td><td>Any OAuth provider needs to implement this interface which has provider specific handlers for different methods to perform authentication, get access tokens, refresh tokens and perform sign out.</td></tr>
@@ -64,6 +64,7 @@
 <tr><td><a href="/docs/reference/plugin-auth-backend.creategoogleprovider">createGoogleProvider</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.createmicrosoftprovider">createMicrosoftProvider</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.createoauth2provider">createOAuth2Provider</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-auth-backend.createoauth2proxyprovider">createOauth2ProxyProvider</a></td><td>Factory function for oauth2-proxy auth provider</td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.createoidcprovider">createOidcProvider</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.createoktaprovider">createOktaProvider</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.createoneloginprovider">createOneLoginProvider</a></td><td></td></tr>
@@ -91,6 +92,7 @@
 <tr><td><a href="/docs/reference/plugin-auth-backend.authhandlerresult">AuthHandlerResult</a></td><td>The return type of an authentication handler. Must contain valid profile information.</td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.authproviderfactory">AuthProviderFactory</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.authproviderfactoryoptions">AuthProviderFactoryOptions</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-auth-backend.authresolvercontext">AuthResolverContext</a></td><td>The context that is used for auth processing.</td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.authresponse">AuthResponse</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.awsalbprovideroptions">AwsAlbProviderOptions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.backstageidentity">BackstageIdentity</a></td><td>The old exported symbol for <a href="/docs/reference/plugin-auth-backend.backstagesigninresult">BackstageSignInResult</a><!-- -->.</td></tr>
@@ -107,6 +109,8 @@
 <tr><td><a href="/docs/reference/plugin-auth-backend.googleprovideroptions">GoogleProviderOptions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.microsoftprovideroptions">MicrosoftProviderOptions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.oauth2provideroptions">OAuth2ProviderOptions</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-auth-backend.oauth2proxyprovideroptions">Oauth2ProxyProviderOptions</a></td><td>Options for the oauth2-proxy provider factory</td></tr>
+<tr><td><a href="/docs/reference/plugin-auth-backend.oauth2proxyresult">OAuth2ProxyResult</a></td><td>JWT header extraction result, containing the raw value and the parsed JWT payload.</td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.oauthproviderinfo">OAuthProviderInfo</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.oauthprovideroptions">OAuthProviderOptions</a></td><td>Common options for passport.js-based OAuth providers</td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.oauthrefreshrequest">OAuthRefreshRequest</a></td><td></td></tr>

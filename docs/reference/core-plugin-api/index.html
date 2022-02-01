@@ -101,12 +101,8 @@
 <tr><td><a href="/docs/reference/core-plugin-api.appcontext">AppContext</a></td><td>The central context providing runtime app specific state that plugin views want to consume.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.apptheme">AppTheme</a></td><td>Describes a theme provided by the app.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.appthemeapi">AppThemeApi</a></td><td>The AppThemeApi gives access to the current app theme, and allows switching to other options that have been registered as a part of the App.</td></tr>
-<tr><td><a href="/docs/reference/core-plugin-api.authprovider">AuthProvider</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.authproviderinfo">AuthProviderInfo</a></td><td>Information about the auth provider.</td></tr>
-<tr><td><a href="/docs/reference/core-plugin-api.authrequester">AuthRequester</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/core-plugin-api.authrequesteroptions">AuthRequesterOptions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.authrequestoptions">AuthRequestOptions</a></td><td>Configuration of an authentication request.</td></tr>
-<tr><td><a href="/docs/reference/core-plugin-api.backstageidentity">BackstageIdentity</a></td><td>The old exported symbol for <a href="/docs/reference/core-plugin-api.backstageidentityresponse">BackstageIdentityResponse</a><!-- -->.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.backstageidentityapi">BackstageIdentityApi</a></td><td>This API provides access to the user's identity within Backstage.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.backstageidentityresponse">BackstageIdentityResponse</a></td><td>Token and Identity response, with the users claims in the Identity.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.backstageplugin">BackstagePlugin</a></td><td>Plugin type.</td></tr>
@@ -122,7 +118,6 @@
 <tr><td><a href="/docs/reference/core-plugin-api.extension">Extension</a></td><td>Plugin extension type.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.externalrouteref">ExternalRouteRef</a></td><td>Route descriptor, to be later bound to a concrete route by the app. Used to implement cross-plugin route references.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.featureflag">FeatureFlag</a></td><td>Fetaure flag descriptor.</td></tr>
-<tr><td><a href="/docs/reference/core-plugin-api.featureflagoutput">FeatureFlagOutput</a></td><td>Replace with using <a href="/docs/reference/core-plugin-api.routeref">RouteRef</a><!-- -->s.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.featureflagshooks">FeatureFlagsHooks</a></td><td>Interface for registering feature flags hooks.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.featureflagssaveoptions">FeatureFlagsSaveOptions</a></td><td>Options to use when saving feature flags.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.fetchapi">FetchApi</a></td><td>A wrapper for the fetch API, that has additional behaviors such as the ability to automatically inject auth information where necessary.</td></tr>
@@ -135,26 +130,21 @@
 <tr><td><a href="/docs/reference/core-plugin-api.oauthrequester">OAuthRequester</a></td><td>Function used to trigger new auth requests for a set of scopes.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.oauthrequesteroptions">OAuthRequesterOptions</a></td><td>Describes how to handle auth requests. Both how to show them to the user, and what to do when the user accesses the auth request.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.oauthscope">OAuthScope</a></td><td>An array of scopes, or a scope string formatted according to the auth provider, which is typically a space separated list.</td></tr>
-<tr><td><a href="/docs/reference/core-plugin-api.oldiconcomponent">OldIconComponent</a></td><td>This exists for backwards compatibility with the old core package. It's used in some parts of this package in order to smooth out the migration, but it is not exported.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.openidconnectapi">OpenIdConnectApi</a></td><td>This API provides access to OpenID Connect credentials. It lets you request ID tokens, which can be passed to backend services to prove the user's identity.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.optionalparams">OptionalParams</a></td><td>Optional route params.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.paramkeys">ParamKeys</a></td><td>Type describing the key type of a route parameter mapping.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.paramnames">ParamNames</a></td><td>Used in <a href="/docs/reference/core-plugin-api.pathparams">PathParams</a> type declaration.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.parampart">ParamPart</a></td><td>Used in <a href="/docs/reference/core-plugin-api.pathparams">PathParams</a> type declaration.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.pathparams">PathParams</a></td><td>This utility type helps us infer a Param object type from a string path For example, <code>/foo/:bar/:baz</code> inferred to <code>{ bar: string, baz: string }</code></td></tr>
-<tr><td><a href="/docs/reference/core-plugin-api.pendingauthrequest">PendingAuthRequest</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.pendingoauthrequest">PendingOAuthRequest</a></td><td>An pending auth request for a single auth provider. The request will remain in this pending state until either reject() or trigger() is called.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.pluginconfig">PluginConfig</a></td><td>Plugin descriptor type.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.pluginfeatureflagconfig">PluginFeatureFlagConfig</a></td><td>Plugin feature flag configuration.</td></tr>
-<tr><td><a href="/docs/reference/core-plugin-api.pluginhooks">PluginHooks</a></td><td>Holds hooks registered by the plugin.</td></tr>
-<tr><td><a href="/docs/reference/core-plugin-api.pluginoutput">PluginOutput</a></td><td><a href="/docs/reference/core-plugin-api.featureflagoutput">FeatureFlagOutput</a> type.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.profileinfo">ProfileInfo</a></td><td>Profile information of the user.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.profileinfoapi">ProfileInfoApi</a></td><td>This API provides access to profile information of the user from an auth provider.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.routefunc">RouteFunc</a></td><td>TS magic for handling route parameters.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.routeref">RouteRef</a></td><td>Absolute route reference.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.sessionapi">SessionApi</a></td><td>The SessionApi provides basic controls for any auth provider that is tied to a persistent session.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.signinpageprops">SignInPageProps</a></td><td>Props for the <code>SignInPage</code> component of <a href="/docs/reference/core-plugin-api.appcomponents">AppComponents</a><!-- -->.</td></tr>
-<tr><td><a href="/docs/reference/core-plugin-api.signinresult">SignInResult</a></td><td>The outcome of signing in on the sign-in page.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.storagevaluechange">StorageValueChange</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.storagevaluesnapshot">StorageValueSnapshot</a></td><td>A snapshot in time of the current known value of a storage key.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.subrouteref">SubRouteRef</a></td><td>Descriptor of a route relative to an absolute <a href="/docs/reference/core-plugin-api.routeref">RouteRef</a><!-- -->.</td></tr>

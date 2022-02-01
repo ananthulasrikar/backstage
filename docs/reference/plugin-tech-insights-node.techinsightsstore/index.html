@@ -20,7 +20,7 @@
 <tr><td><a href="/docs/reference/plugin-tech-insights-node.techinsightsstore.getfactsbetweentimestampsbyids">getFactsBetweenTimestampsByIds(ids, entity, startDateTime, endDateTime)</a></td><td>Retrieves fact values identified by fact row references for an individual entity.</td></tr>
 <tr><td><a href="/docs/reference/plugin-tech-insights-node.techinsightsstore.getlatestfactsbyids">getLatestFactsByIds(ids, entity)</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-tech-insights-node.techinsightsstore.getlatestschemas">getLatestSchemas(ids)</a></td><td>Retrieves latest versions (as defined by semver) of fact schemas from the data store.</td></tr>
-<tr><td><a href="/docs/reference/plugin-tech-insights-node.techinsightsstore.insertfacts">insertFacts(id, facts)</a></td><td>Stores fact containers as rows into data store. Individual items in array correspond to a fact schema based on reference and entity based on entity identifier.<!-- -->Each row may contain multiple individual facts and values</td></tr>
+<tr><td><a href="/docs/reference/plugin-tech-insights-node.techinsightsstore.insertfacts">insertFacts({ id, facts, lifecycle, })</a></td><td>Stores fact containers as rows into data store. Individual items in array correspond to a fact schema based on reference and entity based on entity identifier.<!-- -->Each row may contain multiple individual facts and values</td></tr>
 <tr><td><a href="/docs/reference/plugin-tech-insights-node.techinsightsstore.insertfactschema">insertFactSchema(schemaDefinition)</a></td><td>Stores versioned fact schemas into data store</td></tr>
 </tbody>
 </table>

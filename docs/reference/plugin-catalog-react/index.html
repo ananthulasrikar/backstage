@@ -46,6 +46,7 @@
 <tr><td><a href="/docs/reference/plugin-catalog-react.useentitykinds">useEntityKinds()</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.useentitylistprovider">useEntityListProvider()</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.useentityownership">useEntityOwnership()</a></td><td>Returns a function that checks whether the currently signed-in user is an owner of a given entity. When the hook is initially mounted, the loading flag will be true and the results returned from the function will always be false.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-react.useentitypermission">useEntityPermission(permission)</a></td><td>A thin wrapper around the <a href="/docs/reference/plugin-permission-react.usepermission">usePermission</a> hook which uses the current entity in context to make an authorization request for the given permission.<!-- -->Note: this hook blocks the permission request until the entity has loaded in context. If you have the entityRef and need concurrent requests, use the <code>usePermission</code> hook directly.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.useentitytypefilter">useEntityTypeFilter()</a></td><td>A hook built on top of <code>useEntityListProvider</code> for enabling selection of valid <code>spec.type</code> values based on the selected EntityKindFilter.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.useownedentities">useOwnedEntities(allowedKinds)</a></td><td>Takes the relevant parts of the Backstage identity, and translates them into a list of entities which are owned by the user. Takes an optional parameter to filter the entities based on allowedKinds</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.useownuser">useOwnUser()</a></td><td>Get the catalog User entity (if any) that matches the logged-in user.</td></tr>
@@ -93,7 +94,7 @@
 <tr><td><a href="/docs/reference/plugin-catalog-react.entityreflink">EntityRefLink</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.entityreflinks">EntityRefLinks</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.entityroute">entityRoute</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-react.entityrouteref">entityRouteRef</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-react.entityrouteref">entityRouteRef</a></td><td>A stable route ref that points to the catalog page for an individual entity.<!-- -->This <code>RouteRef</code> can be imported and used directly, and does not need to be referenced via an <code>ExternalRouteRef</code>.<!-- -->If you want to replace the <code>EntityPage</code> from <code>@backstage/catalog-plugin</code> in your app, you need to use the <code>entityRouteRef</code> as the mount point instead of your own.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.entitysearchbar">EntitySearchBar</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.entitytagpicker">EntityTagPicker</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.entitytypepicker">EntityTypePicker</a></td><td></td></tr>
