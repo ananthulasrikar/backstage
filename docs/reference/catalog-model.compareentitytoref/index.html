@@ -13,7 +13,11 @@
 </blockquote>
 <p>Compares an entity to either a string reference or a compound reference.</p>
 <p><b>Signature:</b></p>
-<pre><code class="hljs css language-typescript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">compareEntityToRef</span>(<span class="hljs-params">entity: Entity, ref: EntityRef | EntityName, context?: {
+<pre><code class="hljs css language-typescript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">compareEntityToRef</span>(<span class="hljs-params">entity: Entity, ref: <span class="hljs-built_in">string</span> | {
+    kind?: <span class="hljs-built_in">string</span>;
+    <span class="hljs-keyword">namespace</span>?: <span class="hljs-built_in">string</span>;
+    name: <span class="hljs-built_in">string</span>;
+} | EntityName, context?: {
     defaultKind?: <span class="hljs-built_in">string</span>;
     defaultNamespace?: <span class="hljs-built_in">string</span>;
 }</span>): <span class="hljs-title">boolean</span></span>;
@@ -25,7 +29,7 @@
 </thead>
 <tbody>
 <tr><td>entity</td><td><a href="/docs/reference/catalog-model.entity">Entity</a></td><td>The entity to match</td></tr>
-<tr><td>ref</td><td><a href="/docs/reference/catalog-model.entityref">EntityRef</a> | <a href="/docs/reference/catalog-model.entityname">EntityName</a></td><td>A string or compound entity ref</td></tr>
+<tr><td>ref</td><td>string | { kind?: string; namespace?: string; name: string; } | <a href="/docs/reference/catalog-model.entityname">EntityName</a></td><td>A string or compound entity ref</td></tr>
 <tr><td>context</td><td>{ defaultKind?: string; defaultNamespace?: string; }</td><td>An optional context of default kind and namespace, that apply to the ref if given</td></tr>
 </tbody>
 </table>

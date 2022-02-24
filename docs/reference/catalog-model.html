@@ -41,10 +41,8 @@
 <tr><td><a href="/docs/reference/catalog-model.makevalidator">makeValidator(overrides)</a></td><td>Creates a <a href="/docs/reference/catalog-model.validators">Validators</a> object from <code>overrides</code>, with default values taken from <a href="/docs/reference/catalog-model.kubernetesvalidatorfunctions">KubernetesValidatorFunctions</a></td></tr>
 <tr><td><a href="/docs/reference/catalog-model.parseentityname">parseEntityName(ref, context)</a></td><td>Parses an entity reference, either on string or compound form, and always returns a complete entity name including kind, namespace and name.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.parseentityref">parseEntityRef(ref, context)</a></td><td>Parses an entity reference, either on string or compound form, and returns a structure with a name, and optional kind and namespace.</td></tr>
-<tr><td><a href="/docs/reference/catalog-model.parseentityref_1">parseEntityRef(ref, context)</a></td><td>parseEntityRef with optional Kind.</td></tr>
-<tr><td><a href="/docs/reference/catalog-model.parseentityref_2">parseEntityRef(ref, context)</a></td><td>parseEntityRef with optional Namespace.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.parselocationref">parseLocationRef(ref)</a></td><td>Parses a string form location reference.</td></tr>
-<tr><td><a href="/docs/reference/catalog-model.parselocationreference">parseLocationReference(ref)</a></td><td>Parses a string form location reference.<!-- -->Note that the return type is not <code>LocationSpec</code>, because we do not want to conflate the string form with the additional properties of that type.</td></tr>
+<tr><td><a href="/docs/reference/catalog-model.parselocationreference">parseLocationReference(ref)</a></td><td>Parses a string form location reference.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.stringifyentityref">stringifyEntityRef(ref)</a></td><td>Takes an entity or entity name/reference, and returns the string form of an entity ref.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.stringifylocationref">stringifyLocationRef(ref)</a></td><td>Turns a location ref into its string form.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.stringifylocationreference">stringifyLocationReference(ref)</a></td><td>Turns a location reference into its string form.</td></tr>
@@ -125,7 +123,6 @@
 <tr><td><a href="/docs/reference/catalog-model.entityref">EntityRef</a></td><td>A reference by name to an entity, either as a compact string representation, or as a compound reference structure.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.entityrefcontext">EntityRefContext</a></td><td>The context of defaults that entity reference parsing happens within.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.entityrelation">EntityRelation</a></td><td>A relation of a specific type to another entity in the catalog.</td></tr>
-<tr><td><a href="/docs/reference/catalog-model.entityrelationspec">EntityRelationSpec</a></td><td>Holds the relation data for entities.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.jsonschema">JSONSchema</a></td><td>JSONSchema extendable by arbitrary JSON attributes</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.kindvalidator">KindValidator</a></td><td>Validates entities of a certain kind.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.location_2">Location_2</a></td><td>Entity location for a specific entity.</td></tr>
