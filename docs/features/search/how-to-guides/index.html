@@ -99,9 +99,9 @@ according to your needs.</li>
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="how-to-index-techdocs-documents"></a><a href="#how-to-index-techdocs-documents" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to index TechDocs documents</h2>
 <p>The TechDocs plugin has supported integrations to Search, meaning that it
-provides a default collator ready to be used.</p>
+provides a default collator factory ready to be used.</p>
 <p>The purpose of this guide is to walk you through how to register the
-<a href="https://github.com/backstage/backstage/blob/master/plugins/techdocs-backend/src/search/DefaultTechDocsCollator.ts">DefaultTechDocsCollator</a>
+<a href="https://github.com/backstage/backstage/blob/master/plugins/techdocs-backend/src/search/DefaultTechDocsCollatorFactory.ts">DefaultTechDocsCollatorFactory</a>
 in your App, so that you can get TechDocs documents indexed.</p>
 <p>If you have been through the
 <a href="https://backstage.io/docs/features/search/getting-started">Getting Started with Search guide</a>,
@@ -109,16 +109,17 @@ you should have the <code>packages/backend/src/plugins/search.ts</code> file ava
 so, you can go ahead and follow this guide - if not, start by going through the
 getting started guide.</p>
 <ol>
-<li>Import the DefaultTechDocsCollator from <code>@backstage/plugin-techdocs-backend</code>.</li>
+<li>Import the <code>DefaultTechDocsCollatorFactory</code> from
+<code>@backstage/plugin-techdocs-backend</code>.</li>
 </ol>
-<pre><code class="hljs css language-typescript"><span class="hljs-keyword">import</span> { DefaultTechDocsCollator } <span class="hljs-keyword">from</span> <span class="hljs-string">'@backstage/plugin-techdocs-backend'</span>;
+<pre><code class="hljs css language-typescript"><span class="hljs-keyword">import</span> { DefaultTechDocsCollatorFactory } <span class="hljs-keyword">from</span> <span class="hljs-string">'@backstage/plugin-techdocs-backend'</span>;
 </code></pre>
 <ol start="2">
-<li>Register the DefaultTechDocsCollator with the IndexBuilder.</li>
+<li>Register the <code>DefaultTechDocsCollatorFactory</code> with the IndexBuilder.</li>
 </ol>
 <pre><code class="hljs css language-typescript">indexBuilder.addCollator({
   defaultRefreshIntervalSeconds: <span class="hljs-number">600</span>,
-  collator: DefaultTechDocsCollator.fromConfig(config, {
+  factory: DefaultTechDocsCollatorFactory.fromConfig(config, {
     discovery,
     logger,
     tokenManager,
@@ -169,7 +170,229 @@ indexBuilder.addCollator({
 </code></pre>
 <p>As shown above, you can add a catalog entity filter to narrow down what catalog
 entities are indexed by the search engine.</p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2/24/2022</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/features/search/search-engines"><span class="arrow-prev">← </span><span>Search Engines</span></a><a class="docs-next button" href="/docs/features/techdocs/techdocs-overview"><span>Overview</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#how-to-implement-your-own-search-api">How to implement your own Search API</a></li><li><a href="#how-to-index-techdocs-documents">How to index TechDocs documents</a></li><li><a href="#how-to-limit-what-can-be-searched-in-the-software-catalog">How to limit what can be searched in the Software Catalog</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+<h2><a class="anchor" aria-hidden="true" id="how-to-migrate-from-search-alpha-to-beta"></a><a href="#how-to-migrate-from-search-alpha-to-beta" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to migrate from Search Alpha to Beta</h2>
+<p>For the purposes of this guide, Search Beta version is defined as:</p>
+<ul>
+<li><strong>Search Plugin</strong>: At least <code>v0.x.y</code></li>
+<li><strong>Search Backend Plugin</strong>: At least <code>v0.x.y</code></li>
+<li><strong>Search Backend Node</strong>: At least <code>v0.x.y</code></li>
+</ul>
+<p>In the Beta version, the Search Platform's indexing process has been rewritten
+as a stream pipeline in order to improve efficiency and performance on large
+sets of documents.</p>
+<p>If you've not yet extended the Search Platform with custom code, and have
+instead taken advantage of default collators, decorators, and search engines
+provided by existing plugins, the migration process is fairly straightforward:</p>
+<ol>
+<li><p>Upgrade to at least version <code>0.x.y</code> of
+<code>@backstage/plugin-search-backend-node</code>, as well as any backend plugins whose
+collators you are using (e.g. at least version <code>0.x.y</code> of
+<code>@backstage/plugin-catalog-backend</code> and/or version <code>0.x.y</code> of
+<code>@backstage/plugin-techdocs-backend</code>).</p></li>
+<li><p>Then, make the following changes to your
+<code>/packages/backend/src/plugins/search.ts</code> file:</p>
+<pre><code class="hljs css language-diff"><span class="hljs-deletion">-import { DefaultCatalogCollator } from '@backstage/plugin-catalog-backend';</span>
+<span class="hljs-deletion">-import { DefaultTechDocsCollator } from '@backstage/plugin-techdocs-backend';</span>
+<span class="hljs-addition">+import { DefaultCatalogCollatorFactory } from '@backstage/plugin-catalog-backend';</span>
+<span class="hljs-addition">+import { DefaultTechDocsCollatorFactory } from '@backstage/plugin-techdocs-backend';</span>
+// ...
+  const indexBuilder = new IndexBuilder({ logger, searchEngine });
+  indexBuilder.addCollator({
+    defaultRefreshIntervalSeconds: 600,
+<span class="hljs-deletion">-    collator: DefaultCatalogCollator.fromConfig(config, { discovery }),</span>
+<span class="hljs-addition">+    factory: DefaultCatalogCollatorFactory.fromConfig(config, { discovery }),</span>
+  });
+  indexBuilder.addCollator({
+    defaultRefreshIntervalSeconds: 600,
+<span class="hljs-deletion">-    collator: DefaultTechDocsCollator.fromConfig(config, {</span>
+<span class="hljs-addition">+    factory: DefaultTechDocsCollatorFactory.fromConfig(config, {</span>
+      discovery,
+      logger,
+    }),
+  });
+</code></pre></li>
+</ol>
+<p>Any custom collators, decorators, or search engine implementations will require
+minor refactoring. Continue on for details.</p>
+<h3><a class="anchor" aria-hidden="true" id="rewriting-alpha-style-collators-for-beta"></a><a href="#rewriting-alpha-style-collators-for-beta" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rewriting alpha-style collators for beta</h3>
+<p>In alpha versions of the Backstage Search Platform, collators were classes that
+implemented an <code>execute</code> method which resolved an <code>IndexableDocument</code> array.</p>
+<p>In beta versions, the logic encapsulated by the aforementioned <code>execute</code> method
+is contained within an <a href="https://nodejs.org/docs/latest-v14.x/api/stream.html#stream_object_mode">object-mode</a> <code>Readable</code> stream where each
+object pushed onto the stream is of type <code>IndexableDocument</code>. Instances of this
+stream are instantiated by a factory class conforming to the
+<code>DocumentCollatorFactory</code> interface.</p>
+<p>The optimal conversion strategy will vary depending on the collator's logic, but
+the simplest conversion can follow a process like this:</p>
+<ol>
+<li>Rename your collator class to something like <code>YourCollatorFactory</code> and update
+it to implement <code>DocumentCollatorFactory</code> instead of <code>DocumentCollator</code>.</li>
+<li>Update its <code>execute</code> method so that it resolves
+<code>AsyncGenerator&lt;YourIndexableDocument&gt;</code> instead of <code>YourIndexableDocument[]</code>.</li>
+<li>Implement <code>DocumentCollatorFactory</code>'s <code>getCollator</code> method which resolves to
+<code>Readable.from(this.execute())</code> (which is a utility for creating <a href="https://nodejs.org/docs/latest-v14.x/api/stream.html#stream_readable_streams">readable
+streams</a> from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of#iterating_over_async_generators">async generators</a>).</li>
+</ol>
+<pre><code class="hljs css language-ts"><span class="hljs-keyword">import</span> { DocumentCollatorFactory } <span class="hljs-keyword">from</span> <span class="hljs-string">'@backstage/plugin-search-backend-node'</span>;
+<span class="hljs-keyword">import</span> { Readable } <span class="hljs-keyword">from</span> <span class="hljs-string">'stream'</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> YourCollatorFactory <span class="hljs-keyword">implements</span> DocumentCollatorFactory {
+  <span class="hljs-keyword">public</span> readonly <span class="hljs-keyword">type</span>: <span class="hljs-built_in">string</span> = <span class="hljs-string">'your-type'</span>;
+  <span class="hljs-keyword">async</span> *execute(): AsyncGenerator&lt;YourIndexableDocument&gt; {
+    <span class="hljs-keyword">const</span> widgets = <span class="hljs-keyword">await</span> <span class="hljs-keyword">this</span>.client.getWidgets();
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> widget of widgets) {
+      <span class="hljs-keyword">yield</span> {
+        title: widget.name,
+        location: widget.url,
+        text: widget.description,
+      };
+    }
+  }
+  <span class="hljs-keyword">async</span> getCollator() {
+    <span class="hljs-keyword">return</span> Readable.from(<span class="hljs-keyword">this</span>.execute());
+  }
+}
+</code></pre>
+<p>Note: it may be possible to simplify your collator dramatically! If your custom
+collator was previously using streams under the hood (for example, by reading
+newline delimited JSON from a local or remote file), you could just expose the
+stream directly via a simple factory class:</p>
+<pre><code class="hljs css language-ts"><span class="hljs-keyword">import</span> { DocumentCollatorFactory } <span class="hljs-keyword">from</span> <span class="hljs-string">'@backstage/plugin-search-backend-node'</span>;
+<span class="hljs-keyword">import</span> { createReadStream } <span class="hljs-keyword">from</span> <span class="hljs-string">'fs'</span>;
+<span class="hljs-keyword">import</span> { parse } <span class="hljs-keyword">from</span> <span class="hljs-string">'@jsonlines/core'</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> YourCollatorFactory <span class="hljs-keyword">implements</span> DocumentCollatorFactory {
+  <span class="hljs-keyword">public</span> readonly <span class="hljs-keyword">type</span>: <span class="hljs-built_in">string</span> = <span class="hljs-string">'your-type'</span>;
+  <span class="hljs-keyword">async</span> getCollator() {
+    <span class="hljs-keyword">const</span> parseStream = parse();
+    <span class="hljs-keyword">return</span> createReadStream(<span class="hljs-string">'./documents.ndjson'</span>).pipe(parseStream);
+  }
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="rewriting-alpha-style-decorators-for-beta"></a><a href="#rewriting-alpha-style-decorators-for-beta" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rewriting alpha-style decorators for beta</h3>
+<p>In alpha versions of the Backstage Search Platform, decorators were classes that
+implemented an <code>execute</code> method which took an <code>IndexableDocument</code> array as an
+argument, and resolved a modified array of the same type.</p>
+<p>In beta versions, the logic encapsulated by the aforementioned <code>execute</code> method
+is contained within an object-mode <code>Transform</code> stream which reads objects of
+type <code>IndexableDocument</code>, and writes objects of a conforming type. Similar to
+collators, instances of this stream are instantiated by a factory class
+conforming to the <code>DocumentDecoratorFactory</code> interface.</p>
+<p>Although you can choose to implement a <code>Transform</code> stream from scratch, the
+<code>@backstage/plugin-search-backend-node</code> package provides a <code>DecoratorBase</code> class
+in order to simplify the developer experience. With this base class, all that's
+needed is to transfer your old decorator class logic into the base class' three
+methods (<code>initialize</code>, <code>decorate</code>, and <code>finalize</code>), and implement the factory
+class that instantiates the stream:</p>
+<pre><code class="hljs css language-ts"><span class="hljs-keyword">import</span> { DecoratorBase } <span class="hljs-keyword">from</span> <span class="hljs-string">'@backstage/plugin-search-backend-node'</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> YourDecorator <span class="hljs-keyword">extends</span> DecoratorBase {
+  <span class="hljs-keyword">async</span> initialize() {
+    <span class="hljs-comment">// Setup logic. Performed once before any documents are consumed.</span>
+  }
+  <span class="hljs-keyword">async</span> decorate(
+    <span class="hljs-built_in">document</span>: YourIndexableDocument,
+  ): <span class="hljs-built_in">Promise</span>&lt;YourIndexableDocument | YourIndexableDocument[] | <span class="hljs-literal">undefined</span>&gt; {
+    <span class="hljs-comment">// Perform transformation logic here.</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">document</span>;
+  }
+  <span class="hljs-keyword">async</span> finalize() {
+    <span class="hljs-comment">// Teardown logic. Performed once after all documents have been consumed.</span>
+  }
+}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> YourDecoratorFactory <span class="hljs-keyword">implements</span> DocumentDecoratorFactory {
+  <span class="hljs-keyword">async</span> getDecorator() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> YourDecorator();
+  }
+}
+</code></pre>
+<p>Note the return type of the <code>decorate</code> method and how each can be used to
+different effect.</p>
+<ul>
+<li><p>By resolving a single <code>YourIndexableDocument</code> object, your decorator can be
+used to make simple transformations:</p>
+<pre><code class="hljs css language-ts"><span class="hljs-keyword">class</span> BooleanWidgetCoolnessDecorator <span class="hljs-keyword">extends</span> DecoratorBase {
+  <span class="hljs-keyword">async</span> decorator(widget) {
+    <span class="hljs-comment">// Perform a simple, 1:1 transformation.</span>
+    widget.isCool = widget.isCool === <span class="hljs-string">'true'</span> ? <span class="hljs-literal">true</span> : <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">return</span> widget;
+  }
+}
+</code></pre></li>
+<li><p>By resolving <code>undefined</code>, your decorator can filter out documents which
+shouldn't be in the index:</p>
+<pre><code class="hljs css language-ts"><span class="hljs-keyword">class</span> OnlyCoolWidgetsDecorator <span class="hljs-keyword">extends</span> DecoratorBase {
+  <span class="hljs-keyword">async</span> decorator(widget) {
+    <span class="hljs-comment">// Perform a simple filter operation.</span>
+    <span class="hljs-keyword">return</span> widget.isCool ? widget : <span class="hljs-literal">undefined</span>;
+  }
+}
+</code></pre></li>
+<li><p>By resolving an array of <code>YourIndexableDocument</code> objects, you can generate
+multiple documents based on the content of one:</p>
+<pre><code class="hljs css language-ts"><span class="hljs-keyword">class</span> WidgetByVariantDecorator <span class="hljs-keyword">extends</span> DecoratorBase {
+  <span class="hljs-keyword">async</span> decorator(widget) {
+    <span class="hljs-comment">// Generate one widget doc per widget variant.</span>
+    <span class="hljs-keyword">return</span> widget.variants.map(<span class="hljs-function"><span class="hljs-params">variant</span> =&gt;</span> {
+      <span class="hljs-comment">// Each widget doc is the given widget plus a "variant" property</span>
+      <span class="hljs-comment">// pulled from a widget.variants string array.</span>
+      <span class="hljs-keyword">return</span> {
+        ...widget,
+        variant,
+      };
+    });
+  }
+}
+</code></pre></li>
+</ul>
+<p>In alpha versions, a decorator had access to every <code>IndexableDocument</code>
+simultaneously. This is no longer possible in beta versions (precisely to make
+the indexing process more efficient and performant). You will need to modify
+your decorator's logic so that it does not need access to every document at
+once.</p>
+<h3><a class="anchor" aria-hidden="true" id="rewriting-alpha-style-search-engines-for-beta"></a><a href="#rewriting-alpha-style-search-engines-for-beta" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rewriting alpha-style search engines for beta</h3>
+<p>Search Engines are responsible for both querying and indexing documents to an
+underlying search engine technology. While the search engine query interface
+didn't change between alpha and beta versions, the indexing half of the
+interface <em>did</em> change.</p>
+<p>In alpha versions of the Backstage Search Platform, a search engine implemented
+an <code>index</code> method which took a <code>type</code> and an <code>IndexableDocument</code> array and was
+responsible for writing these documents to the underlying search engine.</p>
+<p>In beta versions, the logic encapsulated by the aforementioned <code>index</code> method is
+contained within an object-mode <code>Writable</code> stream which expects objects of type
+<code>IndexableDocument</code>. On the search engine class itself, the <code>index</code> method is
+replaced with a <code>getIndexer</code> factory method which still takes the <code>type</code>, but
+resolves an instance of the aforementioned <code>Writable</code> stream.</p>
+<p>Although you can choose to implement a <code>Writable</code> stream from scratch, the
+<code>@backstage/plugin-search-backend-node</code> package provides a
+<code>BatchSearchEngineIndexer</code> class in order to simplify the developer experience.
+With this base class, which collects documents in batches of a configurable size
+on your behalf, all that's needed is to transfer your old <code>index</code> method logic
+into the base class' three methods (<code>initialize</code>, <code>index</code>, and <code>finalize</code>), and
+implement the factory method that instantiates the stream:</p>
+<pre><code class="hljs css language-ts"><span class="hljs-keyword">import</span> { BatchSearchEngineIndexer } <span class="hljs-keyword">from</span> <span class="hljs-string">'@backstage/plugin-search-backend-node'</span>;
+<span class="hljs-keyword">import</span> { SearchEngine } <span class="hljs-keyword">from</span> <span class="hljs-string">'@backstage/search-common'</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> YourSearchEngineIndexer <span class="hljs-keyword">extends</span> BatchSearchEngineIndexer {
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params">{ <span class="hljs-keyword">type</span> }: { <span class="hljs-keyword">type</span>: <span class="hljs-built_in">string</span> }</span>) {
+    <span class="hljs-comment">// Customize the number of documents passed to the index method per batch.</span>
+    <span class="hljs-keyword">super</span>({ batchSize: <span class="hljs-number">500</span> });
+    <span class="hljs-comment">// An imaginary search engine indexing client.</span>
+    <span class="hljs-keyword">this</span>.index = <span class="hljs-keyword">new</span> SomeSearchEngineIndex({ indexName: <span class="hljs-keyword">type</span> });
+  }
+  <span class="hljs-keyword">async</span> initialize() {
+    <span class="hljs-comment">// Setup logic. Performed once before any documents are consumed.</span>
+  }
+  <span class="hljs-keyword">async</span> index(documents: IndexableDocument[]) {
+    <span class="hljs-keyword">await</span> <span class="hljs-keyword">this</span>.index.batchOf(documents);
+  }
+  <span class="hljs-keyword">async</span> finalize() {
+    <span class="hljs-comment">// Teardown logic. Performed once after all documents have been consumed.</span>
+  }
+}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> YourSearchEngine <span class="hljs-keyword">implements</span> SearchEngine {
+  <span class="hljs-keyword">async</span> getIndexer(<span class="hljs-keyword">type</span>: <span class="hljs-built_in">string</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> YourSearchEngineIndexer({ <span class="hljs-keyword">type</span> });
+  }
+}
+</code></pre>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 3/4/2022</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/features/search/search-engines"><span class="arrow-prev">← </span><span>Search Engines</span></a><a class="docs-next button" href="/docs/features/techdocs/techdocs-overview"><span>Overview</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#how-to-implement-your-own-search-api">How to implement your own Search API</a></li><li><a href="#how-to-index-techdocs-documents">How to index TechDocs documents</a></li><li><a href="#how-to-limit-what-can-be-searched-in-the-software-catalog">How to limit what can be searched in the Software Catalog</a></li><li><a href="#how-to-migrate-from-search-alpha-to-beta">How to migrate from Search Alpha to Beta</a><ul class="toc-headings"><li><a href="#rewriting-alpha-style-collators-for-beta">Rewriting alpha-style collators for beta</a></li><li><a href="#rewriting-alpha-style-decorators-for-beta">Rewriting alpha-style decorators for beta</a></li><li><a href="#rewriting-alpha-style-search-engines-for-beta">Rewriting alpha-style search engines for beta</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
